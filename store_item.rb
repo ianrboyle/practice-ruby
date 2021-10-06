@@ -5,13 +5,9 @@
 # # Be sure to use symbols for the keys. Try creating hashes using both types of
 # hash symbol syntaxes. (Ruby syntax {:a => 123} vs. “JavaScript” syntax {a: 123}).
 
-item1 = { color: "gray", price: 1000, name: "laptop" }
+items = [{ color: "gray", price: 1000, name: "laptop" }, { color: "black", price: 200, name: "monitor" }, { :color => "white", :price => 5, :name => "notebook" }]
 
-item2 = { color: "black", price: 200, name: "monitor" }
-
-item3 = { :color => "white", :price => 5, :name => "notebook" }
-
-puts item1[:color]
+puts items[0][:color]
 
 class Item
   attr_accessor :name, :color, :price
@@ -39,3 +35,11 @@ puts item4.name
 item4.name = "cup"
 puts item4.name
 item4.inflation_price(0.05)
+
+# items.each_with_index do |item, index|
+#   p item[index]
+# end
+
+item5 = Item.new({ name: items[0][:name], color: items[0][:color], price: items[0][:price] })
+
+p item5.name
