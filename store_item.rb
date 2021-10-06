@@ -36,10 +36,26 @@ item4.name = "cup"
 puts item4.name
 item4.inflation_price(0.05)
 
-# items.each_with_index do |item, index|
-#   p item[index]
-# end
-
 item5 = Item.new({ name: items[0][:name], color: items[0][:color], price: items[0][:price] })
 
 p item5.name
+
+#we want a new variable for each item in the array items (item1, item2, item3, etx)
+
+variables = []
+items.each_with_index do |item, index|
+  variable = "item#{index}"
+  variables << variable
+end
+
+puts variables
+
+class Food < Item
+  def initialize(input_options)
+    super
+    @shelf_life = input_options[:shelf_life]
+  end
+end
+
+banana = Food.new({ name: "banana", color: "yellow", price: 1, shelf_life: "5 days" })
+puts banana.shelf_life
