@@ -16,10 +16,10 @@ puts item1[:color]
 class Item
   attr_accessor :name, :color, :price
 
-  def initialize(input_name, color, price)
-    @name = input_name
-    @color = color
-    @price = price
+  def initialize(input_options)
+    @name = input_options[:name]
+    @color = input_options[:color]
+    @price = input_options[:price]
   end
 
   def prints_info
@@ -32,7 +32,7 @@ class Item
   end
 end
 
-item4 = Item.new("mug", "white", 2.5)
+item4 = Item.new({ name: "mug", color: "white", price: 2.5 })
 
 item4.prints_info
 puts item4.name
