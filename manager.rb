@@ -35,13 +35,17 @@ class Manager < Employee
     puts "Email sent!"
   end
 
+  #gives raises to all employees
   def give_all_raises
+    #for each in employee in employees, call the give_annual_raise method
     @employees.each do |employee|
       employee.give_annual_raise
     end
   end
 
+  #fires all employees - if their active status is true, it gets set to false
   def fire_all_employees
+    #for each employee in the class employees, set active status to false if it currently is equal to true
     @employees.each do |employee|
       if employee.active == true
         employee.active = false
@@ -55,11 +59,7 @@ manager.print_info
 manager.send_report
 manager.give_all_raises
 manager.fire_all_employees
-# Create a method in the Manager class called give_all_raises that loops through each of the
-#  manager’s employees and gives them a raise (using the give_annual_raise method).
-#  Demonstrate how it works.
-# Create a method in the Manager class called fire_all_employees that loops through each of the
-# manager’s employees and changes their active status to false.
+
 employee1.print_info
 employee2.print_info
 p employee1.active
