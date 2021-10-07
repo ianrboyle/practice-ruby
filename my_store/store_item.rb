@@ -9,17 +9,22 @@ items = [{ color: "gray", price: 1000, name: "laptop" }, { color: "black", price
 
 puts items[0][:color]
 
+
+
 class Item
-  attr_accessor :name, :color, :price
+  attr_accessor :name, :color, :price, :quantity
+
+  include Out_Of_Stock
 
   def initialize(input_options)
     @name = input_options[:name]
     @color = input_options[:color]
     @price = input_options[:price]
+    @quantity = input_options[:quantity]
   end
 
   def prints_info
-    puts "#{@name}, #{@color}, #{@price}"
+    puts "#{@name}, #{@color}, #{@price}, #{@quantity}"
   end
 
   def inflation_price(inflation_rate)
@@ -28,7 +33,7 @@ class Item
   end
 end
 
-item4 = Item.new({ name: "mug", color: "white", price: 2.5 })
+item4 = Item.new({ name: "mug", color: "white", price: 2.5, quantity: 0 })
 
 item4.prints_info
 puts item4.name
@@ -51,6 +56,8 @@ end
 puts variables
 
 class Food < Item
+  attr_accessor :shelf_life
+
   def initialize(input_options)
     super
     @shelf_life = input_options[:shelf_life]
@@ -59,3 +66,5 @@ end
 
 banana = Food.new({ name: "banana", color: "yellow", price: 1, shelf_life: "5 days" })
 puts banana.shelf_life
+
+item4.quantity_to_zero
